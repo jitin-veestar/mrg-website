@@ -41,3 +41,8 @@ export interface ProductListResponse {
     products: ApiProduct[];
   };
 }
+
+export interface ProductDetailResponse {
+  statusCode: number;
+  data: ApiProduct;
+}

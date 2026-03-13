@@ -4,6 +4,7 @@ import HomePage from "./pages/home";
 import AboutPage from "./pages/about";
 import SupportPage from "./pages/support";
 import ProductsPage from "./pages/products";
+import ProductDetailPage from "./pages/product-detail";
 
 const App: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const App: React.FC = () => {
           <Route path="/our-story" element={<AboutPage />} />
           <Route path="/support" element={<SupportPage />} />
           <Route path="/products" element={<ProductsPage />} />
+          <Route path="/products/:id" element={<ProductDetailPage />} />
         </Routes>
       </div>
     </BrowserRouter>

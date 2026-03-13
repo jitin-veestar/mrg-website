@@ -1,35 +1,53 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Header: React.FC = () => {
   return (
     <header className="fixed w-full z-50 bg-white shadow-sm border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-brand-red rounded-full flex items-center justify-center">
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 bg-brand-red rounded-full flex items-center justify-center group-hover:scale-105 transition-transform">
               <span className="material-symbols-outlined text-white fill-icon text-2xl">
                 bolt
               </span>
             </div>
-            <span className="font-display font-bold text-2xl tracking-tight text-brand-red">
+            <span className="font-display font-bold text-2xl tracking-tight text-brand-red group-hover:text-red-700 transition-colors">
               MRG
             </span>
-          </div>
+          </Link>
 
           <nav className="hidden lg:flex items-center space-x-10">
-            <Link className="nav-link" to="/products">
+            <NavLink
+              to="/products"
+              className={({ isActive }) =>
+                isActive
+                  ? "nav-link text-primary border-b-2 border-primary pb-1"
+                  : "nav-link"
+              }
+            >
               Products
-            </Link>
-            <Link className="nav-link" to="/our-story">
+            </NavLink>
+            <NavLink
+              to="/our-story"
+              className={({ isActive }) =>
+                isActive
+                  ? "nav-link text-primary border-b-2 border-primary pb-1"
+                  : "nav-link"
+              }
+            >
               Our Story
-            </Link>
-            {/* <a className="nav-link" href="#">
-              Presence
-            </a> */}
-            <Link className="nav-link" to="/support">
+            </NavLink>
+            <NavLink
+              to="/support"
+              className={({ isActive }) =>
+                isActive
+                  ? "nav-link text-primary border-b-2 border-primary pb-1"
+                  : "nav-link"
+              }
+            >
               Support
-            </Link>
+            </NavLink>
           </nav>
 
           <div className="hidden md:flex items-center gap-8">

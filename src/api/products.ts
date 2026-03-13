@@ -1,4 +1,7 @@
-import type { ProductListResponse } from "../types/product";
+import type {
+  ProductDetailResponse,
+  ProductListResponse,
+} from "../types/product";
 
 const API_BASE = "https://product-catalogue-api-ivvhc.ondigitalocean.app/api/v1";
 const COMPANY_ID = "65f1b4923c48de0d7a0d3a6f";
@@ -21,4 +24,20 @@ export async function fetchProductList(
   }
 
   return res.json() as Promise<ProductListResponse>;
+}
+
+export async function fetchProductDetail(
+  id: string
+): Promise<ProductDetailResponse> {
+  const res = await fetch(`${API_BASE}/product/${id}`, {
+    headers: {
+      "x-company-id": COMPANY_ID,
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error(`Product detail failed: ${res.status} ${res.statusText}`);
+  }
+
+  return res.json() as Promise<ProductDetailResponse>;
 }
