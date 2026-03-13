@@ -1,74 +1,54 @@
-# React + TypeScript + Vite
+# MRG Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Website for **Mundra Electrical Industries (MEI)** / MRG — electrical wires, cables, and switchgear for domestic, agricultural, and industrial sectors.
 
-Currently, two official plugins are available:
+## Tech stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** + **TypeScript**
+- **Vite 7** (dev server and build)
+- **React Router** (client-side routing)
+- **Tailwind CSS** (styling)
+- **Material Symbols** (icons)
 
-## React Compiler
+## Prerequisites
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Node.js** 20.19+ or 22.12+ (Vite 7 requirement)
+- npm, yarn, or pnpm
 
-## Expanding the ESLint configuration
+## Commands
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Command        | Description              |
+|----------------|--------------------------|
+| `npm install`  | Install dependencies     |
+| `npm run dev`  | Start dev server (HMR)    |
+| `npm run build`| Type-check + production build |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Run ESLint               |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Project structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── api/          # API helpers (e.g. product list)
+├── components/   # Shared UI (Header, Footer, Hero, etc.)
+├── pages/        # Route-level pages (Home, About, Support, Products)
+├── types/        # TypeScript types
+├── app.tsx       # App shell and routes
+├── main.tsx      # Entry point
+└── index.css     # Global + Tailwind styles
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Main features
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Home** — Hero, features, product highlights, heritage, testimonials, stats
+- **Our Story** — About company, mission, quality, distribution
+- **Support** — Contact form, business hours, address, phone, email
+- **Products** — Full catalog from [product catalogue API](https://product-catalogue-api-ivvhc.ondigitalocean.app) (company id in header, list endpoint)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-# mrg-website
+## Environment
+
+No env vars required for the current setup. The product API uses a fixed company id in the client; if you later need config (e.g. API base URL), add a `.env` file and reference it in the app (and keep `.env*.local` out of version control via `.gitignore`).
+
+## License
+
+Private — MRG Products. All rights reserved.

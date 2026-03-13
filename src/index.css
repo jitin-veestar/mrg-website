@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+      sans-serif;
+    @apply bg-white text-slate-900 antialiased;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply text-sm font-medium text-slate-600 hover:text-primary transition-colors;
+  }
+}
+
+@layer utilities {
+  .hero-overlay {
+    @apply bg-gradient-to-r from-slate-950/80 via-slate-950/60 to-slate-900/40;
+  }
+
+  .fill-icon {
+    font-variation-settings:
+      "FILL" 1,
+      "wght" 400,
+      "GRAD" 0,
+      "opsz" 24;
+  }
+}
